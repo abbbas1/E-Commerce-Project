@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/config.js";
+import ProductModel from "./productModel.js";
 
 const OrderModel = sequelize.define("orderInfo",{
   costomerName: {
@@ -19,5 +20,9 @@ const OrderModel = sequelize.define("orderInfo",{
     allownull: false,
   },
 });
+
+
+OrderModel.hasMany(ProductModel)
+ProductModel.belongsTo(OrderModel)
 
 export default OrderModel;
